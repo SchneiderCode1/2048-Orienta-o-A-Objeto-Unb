@@ -44,7 +44,7 @@ class OperNum(RandomPosNum):
     def SomaUp(self):
         for i in range(0, len(self.lista_pos)-1):
             try:
-                
+                #metodo de soma 
             except IndexError:
                 pass 
             
@@ -58,17 +58,17 @@ class ProxJogada(OperNum):
     
     def PrintBoard(self):
         print(f"""
-            ---------------------
+            -------------------------------
             |  {self.lista_pos[0]}  |  {self.lista_pos[1]}  |  {self.lista_pos[2]}  |  {self.lista_pos[3]}  |  {self.lista_pos[4]}  |
-            ---------------------
+            -------------------------------
             |  {self.lista_pos[5]}  |  {self.lista_pos[6]}  |  {self.lista_pos[7]}  |  {self.lista_pos[8]}  |  {self.lista_pos[9]}  |
-            ---------------------
+            -------------------------------
             |  {self.lista_pos[10]}  |  {self.lista_pos[11]}  |  {self.lista_pos[12]}  |  {self.lista_pos[13]}  |  {self.lista_pos[14]}  |
-            ---------------------
+            -------------------------------
             |  {self.lista_pos[15]}  |  {self.lista_pos[16]}  |  {self.lista_pos[17]}  |  {self.lista_pos[18]}  |  {self.lista_pos[19]}  |
-            ---------------------
+            -------------------------------
             |  {self.lista_pos[20]}  |  {self.lista_pos[21]}  |  {self.lista_pos[22]}  |  {self.lista_pos[23]}  |  {self.lista_pos[24]}  | 
-            ---------------------
+            -------------------------------
             """)
 
 class FimDeJogo(ProxJogada):
