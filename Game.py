@@ -1,54 +1,27 @@
 from package import *
 import colorama
 
-jogada = ProxJogada()
-fim = FimDeJogo()
+taman = int(input("Qual é o tamanho da grade desejada? Ex:. 5 -> 5x5\n"))
 
-jogada.RandomPos()
-jogada.PrintBoard()
+grade_numerica= GradeNum(taman) #cria o objeto de grade Numerica
 
-p = 1
+grade = Grade(taman) #cria o objeto de grade com os atributos de tamanho
 
-while p == 1:
-    fim.Fim()
-    if fim.endGame:
-        print("Fim de Jogo")
-        break
+grade_jogo = GradeJogo(taman) #representação real da grade do jogo, zera cada posição
+grade_jogo.Tranform0() #zera as posições
+
+grade_numerica.imprimir_grade_prev() #representacao numerica das posicoes da grade
+
+operacao = OperNum(taman, grade_jogo.grade_jogo)
+
+tempo = TempoAtual(taman, grade_jogo.grade_jogo)
+
+
+
+for i in range(15):
+    operacao.SomaUp()
+    tempo.momento_atual()
     
-    if jogada.endGame:
-        print("Fim de jogo!")
-        break
-        
-        
-    proxima_jogada = input("""
-            +---+
-            | w |
-        +---+---+---+
-        | a | s | d |
-        +---+---+---+
+#anotações 
 
-    Digite sua jogada (w/cima, s/baixo, a/esquerda, d/direita) ou 0 para sair: 
-    """).lower()
 
-    if proxima_jogada == "w":
-        jogada.SomaUp()
-        
-    elif proxima_jogada == "s":
-        jogada.SomaDown()
-        
-    elif proxima_jogada == "a":
-        jogada.SomaLeft()
-        
-    elif proxima_jogada == "d":
-        jogada.SomaRight()
-        
-    elif proxima_jogada == 0:
-        p == 0
-    
-    else:
-        print("Digite uma jogada válida:\n")
-    
-    jogada.PrintBoard()
-    jogada.RandomPos()
-    jogada.PrintBoard()
-    
