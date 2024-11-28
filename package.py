@@ -62,14 +62,3 @@ class TempoAtual(OperNum):
         print(self.grade_jogo, "Momento atual lista")
             
 
-class FimDeJogo(ProxJogada):
-    def __init__(self):
-        super().__init__()
-        self.endGame = False
-    
-    def Fim(self):
-        cont = 0
-        for pos in self.lista_pos:
-            if pos == 2048:
-                self.endGame == True
-                break
