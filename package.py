@@ -47,28 +47,86 @@ class RandomPosNum(GradeJogo):
             if self.grade_jogo[index] == 0: #caso a posição atual seja 0
                 self.grade_jogo[index] = random.choices([2,4], weights=[0.75, 0.25], k=1)[0] #adiciona 2 ou 4 aleatoriamente. Probabilidade de 2 = 75% e 4 = 25%
                 return False
-            else:
-                return True
-            
     
 class OperNum(RandomPosNum):
     def __init__(self, taman, grade_jogo):
         super().__init__(taman, grade_jogo)
         
-    def SomaUp(self):
-        self.RandomPos() # adiciona um numero aleatório caso uma operação seja realizada
-        for pos in range(self.total-1, -1, -1):
-            try:
-                self.grade_jogo[pos-self.taman] += self.grade_jogo[pos]
-            except Exception as exe:
-                print(f"Fim das linhas. {exe}")
-            #self.grade_jogo[i]
-            #adicionar cima
-            #  0  1  2  3  
-            #  4  5  6  7
-            #  8  9  10 11 
-            #  12 13 14 15
-        print(self.grade_jogo)
+    def SomaUp(self): # adiciona um numero aleatório caso uma operação seja realizada
+        grade_jogo = self.grade_jogo
+        for index in range(self.total - self.taman):
+            for index in range(self.total - self.taman):
+                try:
+                    # print(index, "index")
+                    # print(self.taman, self.taman + index, "posicoes debaixo")
+                    # print(grade_jogo[index + self.taman], "pos")
+                    # print(grade_jogo[index], "elemento")
+                    # print(index + self.taman*2, "prox pos ")
+                    if grade_jogo[index] == 0 or grade_jogo[index] == grade_jogo[index + self.taman]:
+                        #print("Condicao True")
+                        grade_jogo[index] += grade_jogo[index + self.taman]
+                        grade_jogo[index + self.taman] = 0
+                        
+                    
+                except Exception:
+                    print("FIm das linhas")
+                    
+        return self.grade_jogo
+    
+    def SomaDown(self):
+        grade_jogo = self.grade_jogo
+        for index in range(self.total - 1, self.taman - 1, -1):
+            for index in range(self.total - 1, self.taman - 1, -1):
+                try:
+                    # print(index, "index")
+                    # print(self.taman, self.taman + index, "posicoes debaixo")
+                    # print(grade_jogo[index + self.taman], "pos")
+                    # print(grade_jogo[index], "elemento")
+                    # print(index + self.taman*2, "prox pos ")
+                    if grade_jogo[index] == 0 or grade_jogo[index] == grade_jogo[index - self.taman]:
+                        #print("Condicao True")
+                        grade_jogo[index] += grade_jogo[index - self.taman]
+                        grade_jogo[index - self.taman] = 0
+                        
+                    
+                except Exception:
+                    print("FIm das linhas")        
+        return self.grade_jogo
+    
+    def SomaLeft(self):  # Movimenta e soma os números para a esquerda
+        grade_jogo = self.grade_jogo
+        for row in range(self.taman):  # Itera por cada linha
+            for col in range(1, self.taman):  # Da segunda coluna até o final
+                index = row * self.taman + col
+                try:
+                    # Mover os números para a esquerda (sem ultrapassar a borda)
+                    if grade_jogo[index] == 0:  # Se o elemento for zero, move o próximo número
+                        while col > 0 and grade_jogo[index] == 0:  # Move os números para a esquerda
+                            index -= 1
+                            col -= 1
+                    if grade_jogo[index - 1] == 0 or grade_jogo[index - 1] == grade_jogo[index]:
+                        grade_jogo[index - 1] += grade_jogo[index]
+                        grade_jogo[index] = 0
+                except Exception:
+                    pass
+        return self.grade_jogo
+
+    def SomaRight(self):  # Movimenta e soma os números para a direita
+        grade_jogo = self.grade_jogo
+        for row in range(self.taman):  # Itera por cada linha
+            for col in range(self.taman - 2, -1, -1):  # Da penúltima coluna até a primeira
+                index = row * self.taman + col
+                try:
+                    # Mover os números para a direita (sem ultrapassar a borda)
+                    if grade_jogo[index] == 0:  # Se o elemento for zero, move o próximo número
+                        while col < self.taman - 1 and grade_jogo[index] == 0:  # Move os números para a direita
+                            index += 1
+                            col += 1
+                    if grade_jogo[index + 1] == 0 or grade_jogo[index + 1] == grade_jogo[index]:
+                        grade_jogo[index + 1] += grade_jogo[index]
+                        grade_jogo[index] = 0
+                except Exception:
+                    pass
         return self.grade_jogo
     
 class TempoAtual(OperNum):

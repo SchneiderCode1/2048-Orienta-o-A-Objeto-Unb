@@ -14,14 +14,27 @@ grade_numerica.imprimir_grade_prev() #representacao numerica das posicoes da gra
 
 operacao = OperNum(taman, grade_jogo.grade_jogo)
 
+random = RandomPosNum(taman, grade_jogo.grade_jogo)
+
 tempo = TempoAtual(taman, grade_jogo.grade_jogo)
 
 
-for i in range(5):
- operacao.SomaUp()
- tempo.momento_atual()
-    
+while True:
+    resp = int(input("Selecione uma jogada: Up (1), Down (2), Left (3), Right (4)?\n"))
+    if resp == 1:
+        operacao.SomaUp()
+        random.RandomPos()
+    elif resp == 2:
+        operacao.SomaDown()
+        random.RandomPos()
+    elif resp == 3:
+        operacao.SomaLeft()
+        random.RandomPos()
+    elif resp == 4:
+        operacao.SomaRight()
+        random.RandomPos()
+    else:
+        print("Digite um número válido")
+    tempo.momento_atual()
     
 #anotações 
-
-
