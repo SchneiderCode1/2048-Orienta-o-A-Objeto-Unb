@@ -1,5 +1,4 @@
 from package import *
-import colorama
 
 taman = int(input("Qual é o tamanho da grade desejada? Ex:. 5 -> 5x5\n"))
 
@@ -18,9 +17,12 @@ random = RandomPosNum(taman, grade_jogo.grade_jogo)
 
 tempo = TempoAtual(taman, grade_jogo.grade_jogo)
 
+#save = SalvarProgresso(taman, grade_jogo.grade_jogo)
+
+
 
 while True:
-    resp = int(input("Selecione uma jogada: Up (1), Down (2), Left (3), Right (4)?\n"))
+    resp = int(input("Selecione uma jogada: Up (1), Down (2), Left (3), Right (4), Salvar Progresso (5)?\n"))
     if resp == 1:
         operacao.SomaUp()
         random.RandomPos()
@@ -33,6 +35,8 @@ while True:
     elif resp == 4:
         operacao.SomaRight()
         random.RandomPos()
+    elif resp == 5:
+        save.salvar_progresso()
     else:
         print("Digite um número válido")
     tempo.momento_atual()
