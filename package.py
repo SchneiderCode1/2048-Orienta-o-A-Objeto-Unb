@@ -3,16 +3,6 @@ import random
 import json
 import time
 
-class SaveGame():
-    def __init__(self):
-        pass
-    
-    def cria_jogo(self, nome, taman):
-        self.jogos = jogos
-        jogos = dict(saves = dict(nome = nome, grade = taman))
-        return jogos
-
-
 class Grade():
     def __init__(self, taman):
         self.taman = taman
@@ -34,10 +24,23 @@ class GradeNum(Grade):
             print("-" * ((8*self.taman) - (self.taman-1)) )
             
 class GradeJogo(Grade):
-    def __init__(self, taman):
-        super().__init__(taman)
+    def __init__(self, taman, nome_save):
+        super().__init__(taman, nome_save)
         
-        self.grade_jogo = self.CriaListaPos()
+        try: # tenta encontrar save
+            with open("Saves.json", "r") as saves:
+                SaveGames = json.load(saves)
+                print(SaveGames, "Saves Grade Jogo")
+            if SaveGames[nome_save]["jogo"] == "...": #caso o save seja novo
+                print(SaveGames[nome_save]["jogo"], "Savegame")
+                SaveGames[nome_save]["jogo"] = self.CriaListaPos() #cria a lista normalmente
+            else:
+                SaveGames[nome_save]["jogo"] = self.grade_jogo 
+                
+        except Exception:
+            print("Nenhum jogo salvo encontrado")
+            self.grade_jogo = self.CriaListaPos()
+            
         
     def Tranform0(self): # zerar posicoe
         self.grade_jogo = [0] * self.total
@@ -138,9 +141,21 @@ class TempoAtual(OperNum):
             print("-" * ((8*self.taman) - (self.taman-1)) )
             
 
-class SalvarJogo():
-    def __init__(self):
+class SalvarJogo(TempoAtual):
+    def __init__(self, taman, grade_jogo):
+        super().__init__(taman, grade_jogo)
         pass
     
-    def salvar_jogo(self):
+    def salvar_jogo(self, nome_save):
+        try:
+            print(nome_save)
+            with open("Saves.json", "r") as saves:
+                SaveGames = json.load(saves)
+        except Exception:
+            print("Erro: {Exception}")
+        
+        with open("Saves.json", "w") as saves:
+            SaveGames[nome_save]["jogo"] = self.grade_jogo
+            json.dump(SaveGames, saves, indent=4)
+        print(SaveGames)
         
