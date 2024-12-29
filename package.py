@@ -1,5 +1,17 @@
 import random
+
 import json
+import time
+
+class SaveGame():
+    def __init__(self):
+        pass
+    
+    def cria_jogo(self, nome, taman):
+        self.jogos = jogos
+        jogos = dict(saves = dict(nome = nome, grade = taman))
+        return jogos
+
 
 class Grade():
     def __init__(self, taman):
@@ -24,6 +36,7 @@ class GradeNum(Grade):
 class GradeJogo(Grade):
     def __init__(self, taman):
         super().__init__(taman)
+        
         self.grade_jogo = self.CriaListaPos()
         
     def Tranform0(self): # zerar posicoe
@@ -124,9 +137,10 @@ class TempoAtual(OperNum):
             print(f"| {linha_formatada} |")
             print("-" * ((8*self.taman) - (self.taman-1)) )
             
-# class SalvarProgresso(TempoAtual):
-#     def __init__(self, taman, grade_jogo):
-#         super().__init__(taman, grade_jogo)
-        
-#     def salvar_progresso(self):
+
+class SalvarJogo():
+    def __init__(self):
+        pass
+    
+    def salvar_jogo(self):
         
