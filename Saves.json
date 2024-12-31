@@ -1,40 +1,23 @@
 {
-    "Save": {
-        "grade": 3,
-        "jogo": "..."
-    },
-    "Save2": {
-        "grade": 10,
-        "jogo": "..."
-    },
-    "Save_teste": {
-        "grade": 3,
-        "jogo": "..."
-    },
-    "Save-teste2": {
-        "grade": 3,
-        "jogo": "..."
-    },
-    "Teste 123": {
-        "grade": 3,
-        "jogo": "..."
-    },
-    "Tstentadawdad": {
-        "grade": 3,
+    "SchneiderSave": {
+        "grade": 4,
         "jogo": [
             0,
+            4,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            32,
             2,
-            0,
-            2,
-            0,
-            8,
-            8,
-            0
+            16
         ]
-    },
-    "1": {
-        "grade": 2,
-        "jogo": "..."
     }
 }
