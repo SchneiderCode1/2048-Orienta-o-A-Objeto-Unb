@@ -79,47 +79,55 @@ fim = False
 endgame = FimJogo(taman, grade_jogo, random)
 
 while True:
-    resp = int(input("Selecione uma jogada: Up (1), Down (2), Left (3), Right (4), Salvar Progresso (5)?\n"))
-    if resp == 1:
-        operacao.SomaUp()
-        random.RandomPos()
-        fim = endgame.Fim()
-        if random.fim_jogo:  # Verifique se a flag de fim de jogo foi ativada
-            remove.apagar_jogo()
-            break
-    elif resp == 2:
-        operacao.SomaDown()
-        random.RandomPos()
-        fim = endgame.Fim()
-        if random.fim_jogo:  # Verifique se a flag de fim de jogo foi ativada
-            remove.apagar_jogo()
-            break
-    elif resp == 3:
-        operacao.SomaLeft()
-        random.RandomPos()
-        fim = endgame.Fim()
-        if random.fim_jogo:  # Verifique se a flag de fim de jogo foi ativada
-            remove.apagar_jogo()
-            break
-    elif resp == 4:
-        operacao.SomaRight()
-        random.RandomPos()
-        fim = endgame.Fim()
-        if random.fim_jogo:  # Verifique se a flag de fim de jogo foi ativada
-            remove.apagar_jogo()
-            break
-    elif resp == 5:
-        save.salvar_jogo()
-        resp1 = int(input("Seu jogo foi salvo. Deseja sair? 1 - Sim, 2 - Não:\n"))
-        if resp1 == 1:
-            print("Obrigado por jogar! Desligando...")
-            break
-        elif resp1 == 2:
-            print("Ok, vamos continuar jogando!")
+    try:
+        resp = int(input("Selecione uma jogada: Up (1), Down (2), Left (3), Right (4), Salvar Progresso (5)?\n"))
+        if resp == 1:
+            operacao.SomaUp()
+            random.RandomPos()
+            save.salvar_jogo()
+            fim = endgame.Fim()
+            if random.fim_jogo:  # Verifique se a flag de fim de jogo foi ativada
+                remove.apagar_jogo()
+                break
+        elif resp == 2:
+            operacao.SomaDown()
+            random.RandomPos()
+            save.salvar_jogo()
+            fim = endgame.Fim()
+            if random.fim_jogo:  # Verifique se a flag de fim de jogo foi ativada
+                remove.apagar_jogo()
+                break
+        elif resp == 3:
+            operacao.SomaLeft()
+            random.RandomPos()
+            save.salvar_jogo()
+            fim = endgame.Fim()
+            if random.fim_jogo:  # Verifique se a flag de fim de jogo foi ativada
+                remove.apagar_jogo()
+                break
+        elif resp == 4:
+            operacao.SomaRight()
+            random.RandomPos()
+            save.salvar_jogo()
+            fim = endgame.Fim()
+            if random.fim_jogo:  # Verifique se a flag de fim de jogo foi ativada
+                remove.apagar_jogo()
+                break
+        elif resp == 5:
+            save.salvar_jogo()
+            resp1 = int(input("Seu jogo foi salvo.\nDeseja sair? 1 - Sim, 2 - Não:\n"))
+            if resp1 == 1:
+                print("Obrigado por jogar! Desligando...")
+                break
+            elif resp1 == 2:
+                print("Ok, vamos continuar jogando!")
+            else:
+                print("Escolha uma opção válida:\n")
         else:
-            print("Escolha uma opção válida:\n")
-    else:
-        print("Digite um número válido")
+            print("Digite uma opção válida:\n")
+        
+    except ValueError:
+        print("Digite uma jogada válida")
     tempo.momento_atual()
     
 #anotações 

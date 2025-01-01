@@ -31,7 +31,7 @@ class NovoSave():
             print(Exception, "Exception")
             with open("Saves.json", "w") as saves:
                 SaveGames = dict()
-                print(SaveGames,"Dicionario")
+                #print(SaveGames,"Dicionario")
                 json.dump(SaveGames, saves) 
     
     def create_save(self, taman, nome_save):

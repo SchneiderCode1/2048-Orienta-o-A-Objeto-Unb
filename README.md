@@ -14,7 +14,7 @@ Funcionamento Técnico Geral do código:
 O jogo é responsivo ao usuário, isso significa que a dificuldade do jogo é totalmente dependente do usuário. Isso se deve ao fato de que o tamanho da grade é o medidor de dificuldade, 
 então o usuário ao escolher o tamanho da grade ele também está escolhendo a dificuldade do jogo.
 
-O jogo possui mecânica de salvamento, o único momento que o jogo é salvo é quando você instrui o código a salvar o momento atual do jogo.
+O jogo possui mecânica de salvamento, o jogo salva a cada movimento que você realiza durante o jogo, dessa forma se você por algum motivo conseguir quebrar o código, seu progresso não será perdido ao recarregar aquele save. Também existe a opção de salvar e sair do jogo manualmente.
 O jogo também possui mecãnica de carregamento de jogos salvos anteriormente.
 
 Caso você decida escolher a opção de sair, você consequentemente irá parar o funcionamento do código, então você terá que iniciar novamente para jogar.
